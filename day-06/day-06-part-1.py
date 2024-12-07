@@ -22,28 +22,28 @@ def next_direction (grid, direction, position):
         elif (grid[position[0] - 1][position[1]] == "#"):
             return 2
         else:
-            return 1
+            return direction
     elif (direction == 2):
         if (position[1] + 1 >= len(grid[position[0]])):
             return 0
         elif (grid[position[0]][position[1] + 1] == "#"):
             return 3
         else:
-            return 2
+            return direction
     elif (direction == 3):
         if (position[0] + 1 >= len(grid)):
             return 0
         elif (grid[position[0] + 1][position[1]] == "#"):
             return 4
         else:
-            return 3
+            return direction
     else:
         if (position[1] - 1 < 0):
             return 0
         elif (grid[position[0]][position[1] - 1] == "#"):
             return 1
         else:
-            return 4
+            return direction
 
 def count_visited_district (grid, symbol):
     count = 0
@@ -68,9 +68,6 @@ with open(filelocation, "r") as file:
 
 guard_point = find_start_point(grid, "^")
 direction = 1
-
-#print_grid (grid)
-#print (guard_point)
 
 while (direction != 0):
     direction = next_direction(grid, direction, guard_point)
